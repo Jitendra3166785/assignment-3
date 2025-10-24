@@ -204,7 +204,7 @@ namespace Assignment_3
         static void RunQ1()
         {
             Console.WriteLine("---- Q1: Employee ----");
-            Employee emp = new Employee { Name = "Jai Sony", Age = 22, Salary = 45000 };
+            Employee emp = new Employee { Name = "Jitendra yadav", Age = 22, Salary = 45000 };
             emp.Display();
             Console.WriteLine();
         }
@@ -231,10 +231,10 @@ namespace Assignment_3
         static void RunQ4()
         {
             Console.WriteLine("---- Q4: Partial Classes ----");
-            Person p = new Person { FirstName = "Jai", LastName = "Sony" };
+            Person p = new Person { FirstName = "Jitendra", LastName = "yadav" };
             p.PrintFullName();
 
-            Employee2 e2 = new Employee2 { Name = "Jai Sony", Salary = 45000, Bonus = 5000 };
+            Employee2 e2 = new Employee2 { Name = "Jitendra yadav", Salary = 45000, Bonus = 5000 };
             Console.WriteLine("Total Salary: " + e2.CalculateSalary());
             Console.WriteLine();
         }
@@ -253,10 +253,10 @@ namespace Assignment_3
         static void RunQ6()
         {
             Console.WriteLine("---- Q6: Abstract Animal ----");
-            Dog d = new Dog { Name = "Jai Sony", Age = 22 };
+            Dog d = new Dog { Name = "Jitendra yadav", Age = 22 };
             d.Speak();
 
-            Cat cat = new Cat { Name = "Jai Sony", Age = 22 };
+            Cat cat = new Cat { Name = "Jitendra yadav", Age = 22 };
             cat.Speak();
             Console.WriteLine();
         }
