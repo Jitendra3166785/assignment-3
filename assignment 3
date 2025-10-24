@@ -1,0 +1,282 @@
+Assignment 3
+﻿using System;
+using System.Linq;
+
+namespace Assignment_3
+{
+    // ---------------- Q1: Employee ----------------
+    class Employee
+    {
+        public string Name;
+        public int Age;
+        public int Salary;
+
+        public void Display()
+        {
+            Console.WriteLine("Name: " + Name + ", Age: " + Age + ", Salary: " + Salary);
+        }
+    }
+
+    // ---------------- Q2: BankAccount ----------------
+    class BankAccount
+    {
+        public string AccountNo, AccountHolderName;
+        public int Balance;
+
+        public void Deposit(int amount)
+        {
+            Balance += amount;
+            Console.WriteLine("Deposited: " + amount + ", New Balance: " + Balance);
+        }
+
+        public void Withdraw(int amount)
+        {
+            if (amount <= Balance)
+            {
+                Balance -= amount;
+                Console.WriteLine("Withdrawn: " + amount + ", Remaining Balance: " + Balance);
+            }
+            else
+            {
+                Console.WriteLine("Out of Balance");
+            }
+        }
+
+        public void Display()
+        {
+            Console.WriteLine("Account Number: " + AccountNo + ", Holder: " + AccountHolderName + ", Balance: " + Balance);
+        }
+    }
+
+    // ---------------- Q3: Static Classes ----------------
+    static class MathHelper
+    {
+        public static double CalculateAverage(int[] num)
+        {
+            if (num.Length == 0) return 0;
+            return num.Average();
+        }
+    }
+
+    static class Logger
+    {
+        public static void LogMessage(string message)
+        {
+            Console.WriteLine(message);
+        }
+    }
+
+    // ---------------- Q4: Partial Classes ----------------
+    partial class Person
+    {
+        public string FirstName;
+        public string LastName;
+    }
+
+    partial class Person
+    {
+        public void PrintFullName()
+        {
+            Console.WriteLine("Full Name: " + FirstName + " " + LastName);
+        }
+    }
+
+    partial class Employee2
+    {
+        public string Name;
+        public int Salary;
+        public int Bonus;
+    }
+
+    partial class Employee2
+    {
+        public int CalculateSalary()
+        {
+            return Salary + Bonus;
+        }
+    }
+
+    // ---------------- Q5: Abstract Shape ----------------
+    abstract class Shape
+    {
+        public abstract double Area();
+    }
+
+    class Circle : Shape
+    {
+        public double Radius;
+        public override double Area()
+        {
+            return 3.14 * Radius * Radius;
+        }
+    }
+
+    class Rectangle : Shape
+    {
+        public double Width;
+        public double Height;
+
+        public override double Area()
+        {
+            return Width * Height;
+        }
+    }
+
+    // ---------------- Q6: Abstract Animal ----------------
+    abstract class Animal
+    {
+        public string Name;
+        public int Age;
+        public abstract void Speak();
+    }
+
+    class Dog : Animal
+    {
+        public override void Speak()
+        {
+            Console.WriteLine(Name + " says: I am Dog");
+        }
+    }
+
+    class Cat : Animal
+    {
+        public override void Speak()
+        {
+            Console.WriteLine(Name + " says: Meow!");
+        }
+    }
+
+    // ---------------- Q7: Vehicle + Car ----------------
+    class Vehicle
+    {
+        public void StartEngine()
+        {
+            Console.WriteLine("Engine started.");
+        }
+        public void StopEngine()
+        {
+            Console.WriteLine("Engine stopped.");
+        }
+    }
+
+    sealed class Car : Vehicle
+    {
+        public void Drive()
+        {
+            Console.WriteLine("Car is driving.");
+        }
+    }
+
+    // ---------------- Q8: Sealed SavingsAccount ----------------
+    class BankAccount2
+    {
+        public string AccountNumber;
+        public double Balance;
+    }
+
+    sealed class SavingsAccount : BankAccount2
+    {
+        public double InterestRate;
+        public void CalculateInterest()
+        {
+            double interest = Balance * InterestRate / 100;
+            Console.WriteLine("Interest: " + interest);
+        }
+    }
+
+    // ---------------- Main Program ----------------
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            RunQ1();
+            RunQ2();
+            RunQ3();
+            RunQ4();
+            RunQ5();
+            RunQ6();
+            RunQ7();
+            RunQ8();
+
+            Console.ReadLine();
+        }
+
+        static void RunQ1()
+        {
+            Console.WriteLine("---- Q1: Employee ----");
+            Employee emp = new Employee { Name = "Jai Sony", Age = 22, Salary = 45000 };
+            emp.Display();
+            Console.WriteLine();
+        }
+
+        static void RunQ2()
+        {
+            Console.WriteLine("---- Q2: BankAccount ----");
+            BankAccount acc = new BankAccount { AccountNo = "12345", AccountHolderName = "Jai Sony" };
+            acc.Deposit(1000);
+            acc.Withdraw(500);
+            acc.Display();
+            Console.WriteLine();
+        }
+
+        static void RunQ3()
+        {
+            Console.WriteLine("---- Q3: Static Classes ----");
+            int[] nums = { 10, 20, 30, 45 }; // 45 add किया ताकि avg में आपके salary का भी हिस्सा हो
+            Console.WriteLine("Average: " + MathHelper.CalculateAverage(nums));
+            Logger.LogMessage("This is a test log for Jai Sony.");
+            Console.WriteLine();
+        }
+
+        static void RunQ4()
+        {
+            Console.WriteLine("---- Q4: Partial Classes ----");
+            Person p = new Person { FirstName = "Jai", LastName = "Sony" };
+            p.PrintFullName();
+
+            Employee2 e2 = new Employee2 { Name = "Jai Sony", Salary = 45000, Bonus = 5000 };
+            Console.WriteLine("Total Salary: " + e2.CalculateSalary());
+            Console.WriteLine();
+        }
+
+        static void RunQ5()
+        {
+            Console.WriteLine("---- Q5: Abstract Shape ----");
+            Circle c = new Circle { Radius = 5 };
+            Console.WriteLine("Circle Area: " + c.Area());
+
+            Rectangle r = new Rectangle { Width = 4, Height = 6 };
+            Console.WriteLine("Rectangle Area: " + r.Area());
+            Console.WriteLine();
+        }
+
+        static void RunQ6()
+        {
+            Console.WriteLine("---- Q6: Abstract Animal ----");
+            Dog d = new Dog { Name = "Jai Sony", Age = 22 };
+            d.Speak();
+
+            Cat cat = new Cat { Name = "Jai Sony", Age = 22 };
+            cat.Speak();
+            Console.WriteLine();
+        }
+
+        static void RunQ7()
+        {
+            Console.WriteLine("---- Q7: Vehicle + Car ----");
+            Car car = new Car();
+            car.StartEngine();
+            car.Drive();
+            car.StopEngine();
+            Console.WriteLine();
+        }
+
+        static void RunQ8()
+        {
+            Console.WriteLine("---- Q8: SavingsAccount ----");
+            SavingsAccount sa = new SavingsAccount { AccountNumber = "98765", Balance = 45000, InterestRate = 5 };
+            sa.CalculateInterest();
+            Console.WriteLine();
+        }
+    }
+}
